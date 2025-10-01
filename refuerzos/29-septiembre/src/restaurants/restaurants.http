@@ -1,0 +1,4 @@
+GET http://localhost:3000/restaurants/available
+  ?date=2025-09-29T19:51:00
+  &city=Bogota
+  &category=Mexican
