@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { CATEGORIES_DATA } from './constants/CategoriesData';
-import { ICategory } from './interface/ICategory';
-import { Subcategories } from './enum/Subcategories';
+import { CATEGORIES_DATA } from '../constants/CategoriesData';
+import { ICategory } from '../interface/ICategory';
+import { Subcategories } from '../enum/Subcategories';
 
 @Injectable()
 export class CategoriesService {
