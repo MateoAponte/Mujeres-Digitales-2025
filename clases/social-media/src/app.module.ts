@@ -4,16 +4,16 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { CategoriesModule } from './categories/categories.module';
 import { PostsModule } from './posts/posts.module';
-import { FeedModule } from './feed/feed.module';
 import { CommentsModule } from './comments/comments.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { PerfilesModule } from './perfiles/perfiles.module';
+import { EventsModule } from './events/events.module';
 
 @Module({
   imports: [
     UsersModule,
     CategoriesModule,
     PostsModule,
-    FeedModule,
     CommentsModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
@@ -25,6 +25,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       host: 'localhost',
       database: 'social-media',
     }),
+    PerfilesModule,
+    EventsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
