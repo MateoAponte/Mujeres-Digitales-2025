@@ -8,6 +8,7 @@ import { CommentsModule } from './comments/comments.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PerfilesModule } from './perfiles/perfiles.module';
 import { EventsModule } from './events/events.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { EventsModule } from './events/events.module';
     }),
     PerfilesModule,
     EventsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

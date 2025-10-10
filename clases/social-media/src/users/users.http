@@ -8,8 +8,14 @@ Content-Type: application/json
   "activities": ["writer", "singer", "designer"]
 }
 
-GET http://localhost:3000/users/get-user/3
+POST http://localhost:3000/users/check-user
+Content-Type: application/json
+{
+  "email": "laura@gmail.com",
+  "password": "Laura1234567"
+}
 
+GET http://localhost:3000/users/get-user/3
 
 
 PATCH http://localhost:3000/users/update-user/3

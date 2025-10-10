@@ -19,15 +19,22 @@ export class UsersRepositoryService {
     const user = this.repo.create(body); // Crear un molde pero no lo asigna
     return this.repo.save(user); // Guardandolo en DB
   }
-  findUser(id: number) {
+  findUserById(id: number) {
     return this.repo.findOne({
       where: {
         id,
       },
     });
   }
+  findUserByEmail(email: string) {
+    return this.repo.findOne({
+      where: {
+        email,
+      },
+    });
+  }
   updateUser(id: number, body: PatchUserDto) {
-    const user = this.findUser(id);
+    const user = this.findUserById(id);
     if (!!user) {
       return this.repo.update(
         { id },

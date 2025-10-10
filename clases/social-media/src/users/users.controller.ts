@@ -11,6 +11,7 @@ import {
 import { UsersService } from './providers/users.service';
 import { CreateUserDto } from './dtos/CreateUserDto.dto';
 import { PatchUserDto } from './dtos/PathUserDto.dto';
+import { CheckUserDto } from './dtos/CheckUserDto.dto';
 
 @Controller('users')
 export class UsersController {
@@ -26,9 +27,14 @@ export class UsersController {
     return this.usersService.createUser(body);
   }
 
-  @Get('get-user/:id')
-  getUser(@Param('id', ParseIntPipe) id: number) {
-    return this.usersService.getUser(id);
+  @Get('get-user/:email')
+  getUser(@Param('email') email: string) {
+    return this.usersService.getUser(email);
+  }
+
+  @Post('check-user')
+  checkUser(@Body() body: CheckUserDto) {
+    return this.usersService.checkUser(body);
   }
 
   @Patch('update-user/:id')
