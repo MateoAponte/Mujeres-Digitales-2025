@@ -15,7 +15,9 @@ Content-Type: application/json
   "password": "Laura1234567"
 }
 
-GET http://localhost:3000/users/get-user/3
+## Al llevar el Bearer el servidor asume que tu eres quien dices ser
+GET http://localhost:3000/users/get-user/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJsYXVyYUBnbWFpbC5jb20iLCJhY3Rpdml0aWVzIjpbIndyaXRlciIsInNpbmdlciIsImRlc2lnbmVyIl0sImlhdCI6MTc2MDQ5NDE2NywiZXhwIjoxNzYwNDk0MjI3fQ.wO3TDK_8Y3VJsJmlDlLMmipfmaaedB-hUEXjdN45v6A
 
 
 PATCH http://localhost:3000/users/update-user/3

@@ -27,11 +27,14 @@ export class UsersService {
       password: hashPass,
     });
   }
-  getUser(email: string) {
+  getUserByEmail(email: string) {
     return this.usersRepositoryService.findUserByEmail(email);
   }
+  getUserById(id: number) {
+    return this.usersRepositoryService.findUserById(id);
+  }
   async checkUser(body: CheckUserDto) {
-    const user = await this.getUser(body.email);
+    const user = await this.getUserByEmail(body.email);
     if (!!user) {
       const isValidate = await this.authService.checkAuthenticatedUser(
         body.password,
