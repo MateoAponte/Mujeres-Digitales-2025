@@ -15,6 +15,10 @@ import { CreateUserDto } from './dtos/CreateUserDto.dto';
 import { PatchUserDto } from './dtos/PathUserDto.dto';
 import { CheckUserDto } from './dtos/CheckUserDto.dto';
 import { AuthGuard } from '@nestjs/passport';
+import { Roles } from 'src/auth/decorators/roles.decorator';
+import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { ActivitiesGuard } from 'src/auth/guards/activities.guard';
+import { Activities } from 'src/auth/decorators/activites.decorator';
 
 @Controller('users')
 export class UsersController {
@@ -30,7 +34,9 @@ export class UsersController {
     return this.usersService.createUser(body);
   }
 
-  @UseGuards(AuthGuard('token'))
+  @UseGuards(AuthGuard('token'), RolesGuard, ActivitiesGuard)
+  @Roles('admin')
+  @Activities('designer')
   @Get('get-user/:id')
   getUser(@Param('id', ParseIntPipe) id: number, @Req() request: any) {
     return this.usersService.getUserById(id);

@@ -25,10 +25,11 @@ export class JwtProvider {
     const jwtPayload = {
       id: user.id,
       email: user.email,
-      rol: user.role,
+      rol: user.rol,
       activities: user.activities,
     };
 
+    console.log(this.aesProvider.decrypt(AT_SECRET, AES_KEY));
     const access_token = this.jwtService.sign(jwtPayload, {
       secret: this.aesProvider.decrypt(AT_SECRET, AES_KEY),
       expiresIn: '15m',

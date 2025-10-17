@@ -43,7 +43,7 @@ export class Users {
     enum: Roles,
     default: Roles.USER,
   })
-  role: Roles;
+  rol: Roles;
   @Column({
     type: 'enum',
     enum: Activities,
