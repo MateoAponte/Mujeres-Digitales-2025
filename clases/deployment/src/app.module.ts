@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService, ConfigType } from '@nestjs/config';
 import databaseConfig from './config/database.config';
 import enviromentValidation from './config/enviroment.validation';
+import { IDatabase } from './interface/IDatabase';
 
 const ENV = process.env.NODE_ENV;
 
@@ -20,16 +21,24 @@ const ENV = process.env.NODE_ENV;
       imports: [ConfigModule],
       inject: [ConfigService],
       // Opción #1
-      useFactory: (config: ConfigService) => ({
-        type: 'postgres',
-        autoLoadEntities: config.get<boolean>('database.autoLoadEntities'),
-        synchronize: config.get<boolean>('database.synchronize'),
-        port: config.get<number>('database.port'),
-        username: config.get<string>('database.username'),
-        password: config.get<string>('database.password'),
-        host: config.get<string>('database.host'),
-        database: config.get<string>('database.database'),
-      }),
+      useFactory: (config: ConfigService) => {
+        const db: IDatabase = {
+          autoLoadEntities: config.get<boolean>('database.autoLoadEntities'),
+          synchronize: config.get<boolean>('database.synchronize'),
+        };
+
+        if (ENV === 'prod') db.url = config.get<string>('database.url');
+        else {
+          ((db.username = config.get<string>('database.username')),
+            (db.password = config.get<string>('database.password')),
+            (db.host = config.get<string>('database.host')),
+            (db.database = config.get<string>('database.database')));
+        }
+        return {
+          type: 'postgres',
+          ...db,
+        };
+      },
 
       // Opción #2
       // useFactory: (db: ConfigType<typeof databaseConfig>) => ({
