@@ -25,13 +25,15 @@ const ENV = process.env.NODE_ENV;
         const db: IDatabase = {
           autoLoadEntities: config.get<boolean>('database.autoLoadEntities'),
           synchronize: config.get<boolean>('database.synchronize'),
-          username: config.get<string>('database.username'),
-          password: config.get<string>('database.password'),
-          host: config.get<string>('database.host'),
-          database: config.get<string>('database.database'),
         };
-        if (config.get<number>('database.port'))
-          db.port = config.get<number>('database.port');
+
+        if (ENV === 'prod') db.url = config.get<string>('database.url');
+        else {
+          ((db.username = config.get<string>('database.username')),
+            (db.password = config.get<string>('database.password')),
+            (db.host = config.get<string>('database.host')),
+            (db.database = config.get<string>('database.database')));
+        }
         return {
           type: 'postgres',
           ...db,
