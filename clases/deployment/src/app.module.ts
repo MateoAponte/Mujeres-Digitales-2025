@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigModule, ConfigService, ConfigType } from '@nestjs/config';
 import databaseConfig from './config/database.config';
 import enviromentValidation from './config/enviroment.validation';
 
@@ -30,6 +30,18 @@ const ENV = process.env.NODE_ENV;
         host: config.get<string>('database.host'),
         database: config.get<string>('database.database'),
       }),
+
+      // Opción #2
+      // useFactory: (db: ConfigType<typeof databaseConfig>) => ({
+      //   type: 'postgres',
+      //   autoLoadEntities: !!db.autoLoadEntities,
+      //   synchronize: !!db.synchronize,
+      //   port: parseInt(db.port || '5432'),
+      //   username: db.username,
+      //   password: db.password,
+      //   host: db.host,
+      //   database: db.database,
+      // }),
     }),
   ],
   controllers: [AppController],
