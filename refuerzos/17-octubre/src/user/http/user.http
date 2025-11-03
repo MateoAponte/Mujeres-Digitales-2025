@@ -1,0 +1,23 @@
+POST http://localhost:3000/user
+Content-Type: application/json
+
+{
+  "email": "aquiles.salto@gmail.com",
+  "name": "Juan Mojica",
+  "password": "AbC123!asd",
+  "phone": "+573215680165",
+  "status": 0,
+  "currency": "COP"
+}
+
+PATCH http://localhost:3000/user/4adbd75f-21cf-4dd7-9d3f-b8b504cff5ba
+Content-Type: application/json
+
+{
+  "name": "Aquiles Mojica",
+  "phone": "+573215687852"
+}
+
+GET http://localhost:3000/user/4adbd75f-21cf-4dd7-9d3f-b8b504cff5ba
+
+DELETE http://localhost:3000/user/4adbd75f-21cf-4dd7-9d3f-b8b504cff5ba
