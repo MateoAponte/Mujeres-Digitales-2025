@@ -27,7 +27,10 @@ const ENV = process.env.NODE_ENV;
           synchronize: config.get<boolean>('database.synchronize'),
         };
 
-        if (ENV === 'prod') db.url = config.get<string>('database.url');
+        if (ENV === 'prod') {
+          db.url = config.get<string>('database.url')
+          db.ssl = { rejectUnauthorized: false };
+        }
         else {
           ((db.username = config.get<string>('database.username')),
             (db.password = config.get<string>('database.password')),
