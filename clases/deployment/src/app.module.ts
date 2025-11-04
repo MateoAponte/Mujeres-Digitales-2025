@@ -22,21 +22,19 @@ const ENV = process.env.NODE_ENV;
       inject: [ConfigService],
       // Opción #1
       useFactory: (config: ConfigService) => {
+        // Acceder a la variable de entorno
         const db: IDatabase = {
           autoLoadEntities: config.get<boolean>('database.autoLoadEntities'),
           synchronize: config.get<boolean>('database.synchronize'),
+          username: config.get<string>('database.username'), 
+          password: config.get<string>('database.password'),
+          host: config.get<string>('database.host'),
+          database: config.get<string>('database.database'),
         };
 
-        if (ENV === 'prod') {
-          db.url = config.get<string>('database.url')
-          db.ssl = { rejectUnauthorized: false };
-        }
-        else {
-          ((db.username = config.get<string>('database.username')),
-            (db.password = config.get<string>('database.password')),
-            (db.host = config.get<string>('database.host')),
-            (db.database = config.get<string>('database.database')));
-        }
+        if (ENV === 'production') db.ssl = { rejectUnauthorized: false };
+        if (ENV === 'dev') db.port = config.get<number>('database.port');
+
         return {
           type: 'postgres',
           ...db,
