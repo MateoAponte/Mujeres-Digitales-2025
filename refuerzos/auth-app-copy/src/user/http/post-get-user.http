@@ -1,0 +1,7 @@
+POST http://localhost:3000/user/get-user
+Content-Type: application/json
+
+{
+  "name": "Laura Benavides",
+  "pass": "Abc.345"
+}

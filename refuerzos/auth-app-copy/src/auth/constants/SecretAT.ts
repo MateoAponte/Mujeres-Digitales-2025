@@ -1,0 +1,1 @@
+export const SECRET_ACCESS_TOKEN = 'v1.x6KDa1wbufLFnN4g_Nz1UWAPAxr7Ek_98A6KDS2yjAu4BXs';

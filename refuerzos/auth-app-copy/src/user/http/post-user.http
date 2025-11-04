@@ -1,0 +1,11 @@
+POST  http://localhost:3000/user
+Content-Type: application/json
+
+{
+  "name": "Laura Benavides",
+  "pass": "Abc.345",
+  "createdAt": "2022-10-12T00:00:00.000Z",
+  "phone": "+57 3195531725",
+  "status": 1,
+  "currency": "COP"
+}
