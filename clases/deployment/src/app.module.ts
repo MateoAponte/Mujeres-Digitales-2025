@@ -6,6 +6,7 @@ import { ConfigModule, ConfigService, ConfigType } from '@nestjs/config';
 import databaseConfig from './config/database.config';
 import enviromentValidation from './config/enviroment.validation';
 import { IDatabase } from './interface/IDatabase';
+import { ClientsModule } from './clients/clients.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -53,6 +54,7 @@ const ENV = process.env.NODE_ENV;
       //   database: db.database,
       // }),
     }),
+    ClientsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
