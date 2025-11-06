@@ -7,6 +7,8 @@ import databaseConfig from './config/database.config';
 import enviromentValidation from './config/enviroment.validation';
 import { IDatabase } from './interface/IDatabase';
 import { ClientsModule } from './clients/clients.module';
+import { RedisModule } from './redis/redis.module';
+import { EmailSenderModule } from './email-sender/email-sender.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -27,7 +29,7 @@ const ENV = process.env.NODE_ENV;
         const db: IDatabase = {
           autoLoadEntities: config.get<boolean>('database.autoLoadEntities'),
           synchronize: config.get<boolean>('database.synchronize'),
-          username: config.get<string>('database.username'), 
+          username: config.get<string>('database.username'),
           password: config.get<string>('database.password'),
           host: config.get<string>('database.host'),
           database: config.get<string>('database.database'),
@@ -55,6 +57,8 @@ const ENV = process.env.NODE_ENV;
       // }),
     }),
     ClientsModule,
+    RedisModule,
+    EmailSenderModule,
   ],
   controllers: [AppController],
   providers: [AppService],

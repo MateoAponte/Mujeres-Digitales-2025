@@ -9,4 +9,5 @@ export default registerAs('database', () => ({
   host: process.env.DB_HOST,
   database: process.env.DB_DATABASE,
   url: process.env.DB_URL,
+  redis: process.env.REDIS_URL,
 }));

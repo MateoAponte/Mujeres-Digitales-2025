@@ -22,7 +22,7 @@ export class Client {
     type: 'int',
     unique: true,
   })
-  phone: string;
+  phone: number;
 
   @Column({
     type: 'varchar',

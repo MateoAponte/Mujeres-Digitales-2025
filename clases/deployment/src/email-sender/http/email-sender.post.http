@@ -1,0 +1,23 @@
+POST http://localhost:3000/email-sender/welcome-later
+Content-Type: application/json
+
+{
+  "to": "monica.patricia@gmail.com",
+  "name": "Monica Patricia"
+}
+
+POST http://localhost:3000/email-sender/welcome
+Content-Type: application/json
+
+{
+  "to": "monica.patricia@gmail.com",
+  "name": "Monica Patricia"
+}
+
+POST http://localhost:3000/email-sender/welcome-daily
+Content-Type: application/json
+
+{
+  "to": "monica.patricia@gmail.com",
+  "name": "Monica Patricia"
+}

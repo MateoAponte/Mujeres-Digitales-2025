@@ -1,0 +1,1 @@
+export const CLIENT_FIND_ALL_KEY = 'CLIENT_FIND_ALL';

@@ -1,0 +1,4 @@
+export const EMAIL_QUEUE_KEY = 'EMAIL_QUEUE-2';
+export const EMAIL_SCHEDULER_KEY = 'EMAIL_SCHEDULER';
+export const EMAIL_WORKER_KEY = 'EMAIL_WORKER';
+export const EMAIL_KEY = 'EMAIL_FEATURE';
